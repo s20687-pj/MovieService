@@ -31,4 +31,22 @@ public class MovieController {
         }
         return ResponseEntity.ok(byId.get());
     }
+    // 3D
+    @PostMapping ("movies")
+    public ResponseEntity <Movie> addMovie(@RequestBody Movie movie){
+        return ResponseEntity.ok(movieService.save(movie));
+    }
+
+    //3E
+    @PutMapping("movies/{id}")
+    public ResponseEntity <Movie> updateMovie(@PathVariable Long id, @RequestBody Movie movie){
+        return ResponseEntity.ok(movieService.update(id, movie));
+    }
+
+    //3F
+    @DeleteMapping("movies/{id}")
+    public ResponseEntity<String> deleteMovie(@PathVariable Long id){
+        movieService.delete(id);
+        return ResponseEntity.ok("Usunięto");
+    }
 }

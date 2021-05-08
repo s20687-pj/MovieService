@@ -26,4 +26,17 @@ public class MovieService {
         Movie movie = new Movie(id,"Karol", CategoryMovie.ACTION);
         return Optional.of(movie);
     }
+
+    public Movie save(Movie movie) {
+        System.out.println("Dodano film");
+        return movie;
+    }
+
+    public Movie update(Long id, Movie movie) {
+        return movie;
+    }
+
+    public void delete(Long id) {
+
+    }
 }
