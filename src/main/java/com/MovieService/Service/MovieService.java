@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -19,5 +20,10 @@ public class MovieService {
         movies.add(movie2);
         movies.add(movie3);
         return movies;
+    }
+
+    public Optional<Movie> findById(Long id) {
+        Movie movie = new Movie(id,"Karol", CategoryMovie.ACTION);
+        return Optional.of(movie);
     }
 }

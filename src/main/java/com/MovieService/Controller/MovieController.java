@@ -4,11 +4,10 @@ package com.MovieService.Controller;
 import com.MovieService.Service.MovieService;
 import com.MovieService.model.Movie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -23,5 +22,13 @@ public class MovieController {
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> findAll(){
         return ResponseEntity.ok(movieService.findAll());
+    }
+    @GetMapping ("movies/{id}")
+    public ResponseEntity <Movie> findAll(@PathVariable Long id){
+        Optional<Movie> byId = movieService.findById(id);
+        if(byId.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(byId.get());
     }
 }
