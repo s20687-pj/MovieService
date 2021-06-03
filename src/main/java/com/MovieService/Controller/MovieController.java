@@ -56,12 +56,12 @@ public class MovieController {
         return ResponseEntity.ok("Dodano");
     }
 
-//    // zmiana wartosci isAvaiable na true
-//    @PostMapping ("movies/avaiable/{id}")
-//    public ResponseEntity <Movie> isAvaiable(@PathVariable int id){
-//        Movie movie =  movieService.findById(id);
-//        movie.setAvaiable(true);
-//        return ResponseEntity.ok(movieService.save(movie));
-//    }
+   // zmiana wartosci isAvaiable na true
+     @PostMapping ("movies/avaiable/{id}")
+    public ResponseEntity <Movie> isAvaiable(@PathVariable int id){
+          Movie movie =  movieService.findById(id);
+          movie.setAvaiable(true);
+          return ResponseEntity.ok(movieService.save(movie));
+   }
 
 }
