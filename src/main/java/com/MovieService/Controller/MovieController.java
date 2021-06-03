@@ -24,8 +24,8 @@ public class MovieController {
         return ResponseEntity.ok(movieService.findAll());
     }
     @GetMapping ("movies/{id}")
-    public ResponseEntity <Movie> findAll(@PathVariable Long id){
-        Optional<Movie> byId = movieService.findById(id);
+    public ResponseEntity <Movie> findAll(@PathVariable int id){
+        Optional<Movie> byId = Optional.ofNullable(movieService.findById(id));
         if(byId.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -45,8 +45,23 @@ public class MovieController {
 
     //3F
     @DeleteMapping("movies/{id}")
-    public ResponseEntity<String> deleteMovie(@PathVariable Long id){
+    public ResponseEntity<String> deleteMovie(@PathVariable int id){
         movieService.delete(id);
         return ResponseEntity.ok("Usunięto");
     }
+
+    @PostMapping ("moviestest")
+    public ResponseEntity <String> addMovietest(@RequestBody Movie movie){
+        movieService.save2(movie);
+        return ResponseEntity.ok("Dodano");
+    }
+
+//    // zmiana wartosci isAvaiable na true
+//    @PostMapping ("movies/avaiable/{id}")
+//    public ResponseEntity <Movie> isAvaiable(@PathVariable int id){
+//        Movie movie =  movieService.findById(id);
+//        movie.setAvaiable(true);
+//        return ResponseEntity.ok(movieService.save(movie));
+//    }
+
 }
