@@ -1,12 +1,10 @@
 package com.MovieService.Service;
 
-import com.MovieService.Excepion.MovieNotFoundException;
+import com.MovieService.Repository.MovieRepository;
 import com.MovieService.model.Movie;
-import com.MovieService.model.enums.CategoryMovie;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MovieService {

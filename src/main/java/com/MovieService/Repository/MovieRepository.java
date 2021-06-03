@@ -1,4 +1,4 @@
-package com.MovieService.Service;
+package com.MovieService.Repository;
 
 import com.MovieService.model.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,7 +23,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Modifying
     @Query(value = "insert into movies (id, name, category) values (:#{#m.id},:#{#m.name},:#{#m.category})", nativeQuery = true)
     void save2(@Param("m") Movie movie);
-    
+
 
     @Modifying
     @Query("delete movies m where m.id =?1")
